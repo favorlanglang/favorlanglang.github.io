@@ -6,9 +6,9 @@
 python3 build.py
 ```
 
-This builds the website into root dir.
+This command builds the website into the root dir
 
 
 ## Edit Website
 
-All editing are done in html template files in `templates/`
+All editing is done in html template files in `templates/`
