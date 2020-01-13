@@ -2,10 +2,12 @@
 
 ## Build
 
-cd to `src/`
-
 ```sh
-python3 construct_dict.py
+python3 build.py
 ```
 
-This creates `dict.html` and `favorlang_dict_transcribed.pdf` in the root dir.
+This builds the website into root dir.
+
+## Edit Website
+
+All editing need to be done in the html template files in `templates/`.

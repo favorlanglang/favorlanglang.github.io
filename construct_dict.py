@@ -76,19 +76,7 @@ def index_lemma_in_def(df, all_lemma, def_col='釋義'):
 
 ########------------------------ Main Function --------------------##########
 
-def main():
-    #------------------ Config ------------------#
-    chrome_binary = 'chromium-browser'
-    title = "Favorlang Dictionary"
-    html_file = "../dict.html"
-    pdfFile = '../favorlang_dict_transcribed.pdf'
-    
-    with open("dict-template.html", encoding="utf-8") as f:
-        html_template = ''.join([line.strip() for line in f])
-    
-    
-
-
+def getDictItems():
     #--------------------- Get data from google sheets -------------------#
     merged_df = import_from_gsheet()
     #---------------- Index lemma mentioned in def ----------------#
@@ -125,12 +113,15 @@ def main():
         # Record alphabet data for next loop
         lemma = row['詞條'].strip()
     # Write dict toc
-    li = ["<li><a href='#" + id_ + f"'>{id_[0].upper()}</a></li>" for id_ in toc_id]
+    toc = ["<li><a href='#" + id_ + f"'>{id_[0].upper()}</a></li>" for id_ in toc_id]
+    
+    
+    return dict_string, ''.join(toc)
     # Write html template
-    html = html_template.format(dictionary=dict_string,
-                                toc=''.join(li))    
-    with open(html_file, 'w', encoding="utf-8") as f:
-        f.write(html)
+    #html = html_template.format(dictionary=dict_string,
+    #                            toc=''.join(li))    
+    #with open(html_file, 'w', encoding="utf-8") as f:
+    #    f.write(html)
 
 
 

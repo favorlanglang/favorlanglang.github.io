@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dictionary | Favorlang
+{% endblock %}
+
+{% block script %}
+    <script src="js/custom.js"></script>
+    <link rel="stylesheet" href="css/style-dict.css">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Content -->
+    <div id="content" class="12u skel-cell-important">
+        <section>
+            <header>
+                <h2>字典詞條</h2>
+                <span class="byline">Dictionary Entries</span>
+            </header>
+            
+            <ul class="toc">{{ toc }}</ul>
+            <div class="dict">{{ dictionary }}</div>
+
+        </section>
+    </div>
+{% endblock %}
