@@ -1,0 +1,18 @@
+.precise-match {
+    float: right;
+}
+
+#content header {
+    margin-bottom: 0.45em;
+}
+
+#app input {
+    margin-bottom: 0.2em;
+}
+
+@media screen and (max-width: 650px) {
+    .precise-match {display: none;}
+    input {
+        width: 32.5%;
+    }
+}
