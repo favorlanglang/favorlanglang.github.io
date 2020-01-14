@@ -94,7 +94,7 @@ Search | Favorlang
             <input type="text" placeholder="Definition" v-model.lazy="search.ori">
             <input type="text" placeholder="中文釋義" v-model.lazy="search.chinese">
             <span class="exact-match" v-bind:title="checkbox_msg">
-                Exact Match:
+                Exact Search:
                 <input type="checkbox" v-model="exact">
             </span>
 
@@ -128,7 +128,7 @@ Search | Favorlang
                     chinese: "",
                 },
                 exact: false,
-                checkbox_msg: "Uncheck to ignore uppercase & diacritics",
+                checkbox_msg: "Uncheck to ignore diacritics and case",
             }
         },
         created() {
