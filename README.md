@@ -13,7 +13,7 @@ This command builds the website into the root dir
 
 ### Edit Website
 
-Do not edit the html files in the root dir. They are automaticaally generated.
+Do not edit the html files in the root dir. They are automatically generated.
 The content of the website is defined in `config.yml` and the markdown files in `content/`. Relations between markdown files and page content are defined in `config.yml`.
 
 To modify the HTML structure, template, or Vue app, edit the corresponding files in `templates/`.
