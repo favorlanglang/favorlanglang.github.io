@@ -93,9 +93,9 @@ Search | Favorlang
             <input type="text" placeholder="Item" v-model.lazy="search.lemma">
             <input type="text" placeholder="Definition" v-model.lazy="search.ori">
             <input type="text" placeholder="中文釋義" v-model.lazy="search.chinese">
-            <span class="precise-match" v-bind:title="checkbox_msg">
+            <span class="exact-match" v-bind:title="checkbox_msg">
                 Exact Match:
-                <input type="checkbox" v-model="precise">
+                <input type="checkbox" v-model="exact">
             </span>
 
             <div class="dict">
@@ -127,7 +127,7 @@ Search | Favorlang
                     ori_norm: "",
                     chinese: "",
                 },
-                precise: true,
+                exact: false,
                 checkbox_msg: "Uncheck to ignore uppercase & diacritics",
             }
         },
@@ -146,7 +146,7 @@ Search | Favorlang
             },
             filterLemma: function () {
                 return this.entries.filter(entry => {
-                    if (this.precise)
+                    if (this.exact)
                         return entry.lemma.includes(this.search.lemma);
                     else
                         return entry.lemma_norm.includes(this.search.lemma_norm);
@@ -154,7 +154,7 @@ Search | Favorlang
             },
             filterDef: function () {
                 return this.entries.filter(entry => {
-                    if (this.precise)
+                    if (this.exact)
                         return entry['ori-def'].includes(this.search.ori);
                     else
                         return entry['ori-def_norm'].includes(this.search.ori_norm);

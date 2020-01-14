@@ -1,5 +1,6 @@
 window.onload = function() {
-    var selector = `nav#nav > ul > li > a[href="${document.URL.split('/').slice(-1)[0]}"]`
+    var currURL = document.URL.split('/').slice(-1)[0].split('#')[0];
+    var selector = `nav#nav > ul > li > a[href="${currURL}"]`;
     var active = document.querySelector(selector);
 
     if (active == null)
