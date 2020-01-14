@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 650px) {
-    .precise-match {display: none;}
+    .exact-match {display: none;}
     input {
         width: 32%;
     }
