@@ -1,4 +1,8 @@
+import os
+import re
+import mistune
 import requests
+import yaml
 import json
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -10,23 +14,53 @@ def getDictToc():
     toc = [ "<li><a href='#" + id_ + f"'>{text}</a></li>" for id_, text in json.loads(toc) ]
     return ''.join(toc)
 
+# Modify `config.yml`
+def mdpath2html(dict_):
+    for key in dict_:
+        if type(dict_[key]) is dict:
+            mdpath2html(dict_[key])
+        elif type(dict_[key]) is list:
+            for item in dict_[key]:
+                mdpath2html(item)
+        else:
+            if re.match("^[a-zA-Z0-9/_-]+\.md$", dict_[key]):
+                if not os.path.isfile(dict_[key]):
+                    print(f"`{dict_[key]}` is not a markdown file")
+                    return
+                
+                # Replace path with content in dict
+                with open(dict_[key], encoding="utf-8") as f:
+                    content = ''.join([line for line in f])
+                dict_[key] = mistune.markdown(content, escape=False)
+
+# Import `config.yml`
+def import_config(fp='config.yml'):
+    with open(fp, encoding="utf-8") as f:
+        config = yaml.load(f, Loader=yaml.FullLoader)
+    mdpath2html(config)
+    return config
+
+
+
 
 #------------ Build Web site from templates/*.html -------------#
 # Setup jinja2 template
 env = Environment(
     loader=FileSystemLoader('templates')
 )
+# Import config.yml
+config = import_config()
 
 #  index.html
 template = env.get_template('index.html')
 with open("index.html", 'w', encoding="utf-8") as f:
-    html_str = template.render(sidebar=True)
+    html_str = template.render(config['index'])
     f.write(html_str)
 
 # intro.html
 template = env.get_template('intro.html')
 with open("intro.html", 'w', encoding="utf-8") as f:
-    html_str = template.render(sidebar=False, sectionTitle="簡介")
+    html_str = template.render(config['intro'])
     f.write(html_str)
 
 # render dict.html

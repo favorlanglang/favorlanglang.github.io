@@ -187,7 +187,19 @@
 				}
 
 	/* Lists */
-
+		#content section ul {
+			margin-left: 1em;
+			list-style-type: square;
+		}
+		#content section ul ul, 
+		#content section ul ol,
+		#content section ol ul,
+		#content section ol ol {
+			margin-left: 1.3em;
+		}
+		#content section ol {
+			list-style-type: decimal;
+		}
 		ul.default
 		{
 			margin: 0;

@@ -1,0 +1,28 @@
+index:
+  sections:
+    - title: Section 1
+      subtitle: a subtitle
+      content: "content/index.md"
+    - title: Section 2
+      subtitle: section 2 subtitle
+      content: "content/index.md"
+  sidebar:
+    title: "Sidebar title"
+    items:
+      - title: "item title 1"
+        img: "path/to/img"
+        desc: "A brief description"
+      - title: "item title 2"
+        img: "images/pic05.jpg"
+        desc: "A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. "
+      - title: "item title 3"
+        img: "path/to/img"
+        desc: "A brief description"
+intro:
+  sections:
+    - title: Section 1
+      subtitle: a subtitle
+      content: "content/index.md"
+    - title: Section 2
+      subtitle: section 2 subtitle
+      content: "content/index.md"
