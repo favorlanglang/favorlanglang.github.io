@@ -33,7 +33,7 @@
                 <div class="dict">
                     <div v-for="(entry, idx) in entries" class="item" v-bind:id="[[ entry.item_id ]]">
                         <div class="lemma" v-bind:id="[[ entry.lemma_id ]]">[[ entry.lemma ]]</div>
-                        <span class="page">[[ entry["ori-page"] ]]</span>
+                        <span class="page">[[ entry["page"] ]]</span>
                         <p class="zh-def">[[ entry["zh-def"] ]]</p>
                         <p class="ori-def" v-html="entry['ori-def']"></p>
                     </div>
