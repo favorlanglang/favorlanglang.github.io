@@ -6,19 +6,27 @@ index:
     - title: 下載字典
       subtitle: Download dictionary files
       content: "content/dict_download.md"
-   
   sidebar:
-    title: "Sidebar title"
+    title: "相關資源"
     items:
-      - title: "item title 1"
-        img: "path/to/img"
-        desc: "A brief description"
-      - title: "item title 2"
-        img: "images/pic05.jpg"
-        desc: "A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. A brief description. "
-      - title: "item title 3"
-        img: "path/to/img"
-        desc: "A brief description"
+      - title: "虎尾壟語字典英譯本"
+        url: "https://archive.org/details/dictionaryfavor00happgoog/page/n7"
+        img: "img/favorlang_dict_cover.png"
+        desc: 《虎尾壟語詞典》荷蘭文原本，1650年由傳教士哈伯特編撰而成。
+          麥都思牧師於 1840 年撰寫的英譯本，即是此專案所轉寫之資料來源。
+      - title: "Text analysis of Favorlang"
+        url: "http://www.ling.sinica.edu.tw/LL/zh/monographs.Contect/%E6%B3%95%E4%BD%9B%E6%9C%97%E8%AA%9E%E6%96%87%E6%9C%AC%E5%88%86%E6%9E%90"
+        img: "img/text_analysis_of_favorlang.jpg"
+        desc: 2019 年由中研院李壬癸院士編撰而成的《虎尾壟語文本分析》，是關於虎尾壟語的重要參考資料。
+      - title: "原住民族語言 線上詞典"
+        url: https://m-dictionary.apc.gov.tw/
+      - title: "原住民族語言 書寫系統"
+        url: http://ilrdc.tw/research/rwview/rwsystem.php
+      - title: "族語E樂園"
+        url: http://web.klokah.tw/
+
+
+
 intro:
   sections:
     - title: Section 1

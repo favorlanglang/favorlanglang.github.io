@@ -33,9 +33,15 @@
         <ul class="style">
             {% for item in sidebar['items'] %}
             <li>
-                <p class="posted">{{ item['title'] }}</p>
-                <img src="{{ item['img'] }}" alt="" />
-                <p class="text">{{ item['desc'] }}</p>
+                <p class="posted">
+                    <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                </p>
+                {% if item['img'] %}
+                    <img src="{{ item['img'] }}" alt="" />
+                {% endif %}
+                {% if item['desc'] %}
+                    <p class="text">{{ item['desc'] }}</p>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>
