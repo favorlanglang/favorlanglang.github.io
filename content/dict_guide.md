@@ -1,9 +1,11 @@
 ### 字典詞條 [🔗](https://favorlanglang.github.io/dict.html)
 
 該欄由電子化虎尾壟語字典的所有詞條以字母表順序排列而成。  
-每個詞條包括「單詞」、「中文釋義」、「原文釋義」、「原文頁碼」四部分。詞條示例如下：
+每個詞條包括「單詞」、「中文釋義」、「原文釋義」、「原文頁碼<sup>*</sup>」四部分。詞條示例如下：
 
 ![item](dict_doc/item.png)
+
+<sup>*</sup> 原文頁碼是指[虎尾壟語字典英譯本](https://favorlanglang.github.io/dict/Favorlang_eng.pdf) 的 **PDF 頁數** (非印刷於書上之頁碼)
 
 ### 電子檢索 [🔗](https://favorlanglang.github.io/search.html)
 
