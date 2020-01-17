@@ -3,13 +3,13 @@
 
 ### 字典詞條 [🔗](./dict.html)
 
-線上虎尾壠語字典的順序依照原本英譯本字典的順序排列。每個詞條的內容包括「單詞」、「中文釋義」、「原文釋義」、「原文頁碼<sup>*</sup>」四個部分。
+線上虎尾壠語字典的順序依照虎[尾壠字典英譯本](https://favorlanglang.github.io/dict/Favorlang_eng.pdf)的順序排列。每個詞條的內容包括「單詞」、「中文釋義」、「原文釋義」、「原文頁碼<sup>*</sup>」四個部分。
 
 下方範例為 **`Ina`** 這個詞條：
 
 ![item](dict_doc/item.png)
 
-<sup>*</sup> 原文頁碼是指[虎尾壠語字典英譯本](https://favorlanglang.github.io/dict/Favorlang_eng.pdf) 的 **PDF 頁數** (非印刷於書上之頁碼)
+<sup>*</sup> 原文頁碼是指[虎尾壠語字典英譯本](https://favorlanglang.github.io/dict/Favorlang_eng.pdf)的 **PDF 頁數** (非印刷於書上之頁碼)
 
 ### 電子檢索 [🔗](./search.html)
 
