@@ -20,7 +20,7 @@
 <!-- Content -->
 <div id="content" class="8u skel-cell-important">
     {% for section in sections %}
-        <section>
+        <section {% if section['id'] %} id="{{ section['id'] }}" {% endif %}>
             <header>
                 <h2>{{ section['title'] }}</h2>
                 <span class="byline">{{ section['subtitle'] }}</span>
@@ -55,5 +55,11 @@
         </ul>
     </section>
 </div>
+
+<style>
+div#content {
+    scroll-behavior: smooth!important;
+}
+</style>
 
 {% endblock %}
