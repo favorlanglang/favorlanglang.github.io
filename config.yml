@@ -29,9 +29,6 @@ index:
 
 intro:
   sections:
-    - title: Section 1
-      subtitle: a subtitle
-      content: "content/index.md"
-    - title: Section 2
-      subtitle: section 2 subtitle
-      content: "content/index.md"
+    - title: 參與人員
+      subtitle: Participants
+      content: "content/participants.md"
