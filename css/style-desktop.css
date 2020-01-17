@@ -102,22 +102,27 @@
 				font-weight: 200;
 				font-size: 1em;
 				outline: 0;
-				color: rgba(255,255,255,.7);
+				/* color: rgba(255,255,255,.7); */
+				color: rgba(190, 190, 190);
+				background-color: rgba(255, 255, 255, 0.274);
 			}
 
 
 			#nav > ul > li > a:hover
 			{
 				color: #FFF;
+				background-color: rgba(160, 160, 160, 0.24);
 			}
 
 			#nav li.active a
 			{
-				background: none;
-				border-radius: 40px;
-				border: 2px solid;
-				border-color: rgba(255,255,255,.8);
+				/* background: none; */
+				/* border-radius: 40px; */
+				/* border: 2px solid; */
+				/* border-color: rgba(255,255,255,.8); */
+				
 				color: #FFF;
+				background-color: rgba(160, 160, 160, 0.24);
 			}
 
 			#nav > ul > li > ul

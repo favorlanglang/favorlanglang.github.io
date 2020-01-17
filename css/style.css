@@ -344,16 +344,18 @@
 	#header
 	{
 		position: relative;
-		background: #2a2f27 /*url(../images/banner.jpg) no-repeat*/;
+		/*background: #2a2f27 url(../images/banner.jpg) no-repeat*/;
+		background: url(../img/background.jpg) no-repeat;
 		background-size: cover;
 	}
 
-	#logo
+	#logo > h1
 	{
+		text-shadow: 1.4px 1.4px rgba(128, 128, 128, 0.746) ;
 	}
-
 	#logo span {
 		margin-top: 0.5em;
+		text-shadow: 1px 1px rgba(128, 128, 128, 0.746) ;
 	}
 	
 	#nav
