@@ -103,15 +103,16 @@
 				font-size: 1em;
 				outline: 0;
 				/* color: rgba(255,255,255,.7); */
-				color: rgba(190, 190, 190);
-				background-color: rgba(255, 255, 255, 0.274);
+				color: rgba(255, 255, 255, 0.694);
+				background-color: rgba(187, 187, 187, 0.24);
 			}
 
 
 			#nav > ul > li > a:hover
 			{
-				color: #FFF;
-				background-color: rgba(160, 160, 160, 0.24);
+				color: rgb(46, 46, 46);
+				background-color: rgba(255, 255, 255, 0.43);
+				
 			}
 
 			#nav li.active a
@@ -121,8 +122,8 @@
 				/* border: 2px solid; */
 				/* border-color: rgba(255,255,255,.8); */
 				
-				color: #FFF;
-				background-color: rgba(160, 160, 160, 0.24);
+				color: rgb(46, 46, 46);
+				background-color: rgba(255, 255, 255, 0.43);
 			}
 
 			#nav > ul > li > ul
