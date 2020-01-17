@@ -116,7 +116,6 @@
 	}
 
 	/* Sections/Articles */
-	
 		section,
 		article
 		{
@@ -139,6 +138,29 @@
 		.row > article
 		{
 			margin-bottom: 0;
+		}
+
+		#content section img {
+			max-width: 100%;
+		}
+		/* #content section a {
+			font-size: smaller;
+		}
+		#content section a:hover {
+			text-decoration: none;
+			font-size: initial;
+		} */
+		#content section header>h2 {
+			font-size: 2.3em;
+		}
+		#content section h3 {
+			font-size: 1.5em;
+		}
+		#content section h4 {
+			font-size: 1.2em;
+		}
+		#content section {
+			margin-top: 2em;
 		}
 
 	/* Images */
@@ -187,8 +209,8 @@
 				}
 
 	/* Lists */
-		#content section ul {
-			margin-left: 1em;
+		#content section ul, #content section ol {
+			margin-left: 2em;
 			list-style-type: square;
 		}
 		#content section ul ul, 

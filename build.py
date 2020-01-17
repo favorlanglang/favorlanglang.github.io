@@ -4,6 +4,7 @@ import mistune
 import requests
 import yaml
 import json
+from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
@@ -13,6 +14,36 @@ def getDictToc():
     toc = requests.get("https://favorlanglang.github.io/dict/dict-toc.json").text
     toc = [ "<li><a href='#" + id_ + f"'>{text}</a></li>" for id_, text in json.loads(toc) ]
     return ''.join(toc)
+
+def processMd(md_str, append='img'):
+    """Convert Markdown to HTML, with img src processed.
+    
+    The ``src`` attributes in img tags are prepended with
+    custom path to the directory of the images.
+
+    Parameters
+    ----------
+    md_str : str
+        Raw markdown string.
+    append: str
+        Path to be prepended to the ``src`` attributes.
+    
+    Returns
+    -------
+    str
+        Raw HTML string.
+    """
+    html = mistune.markdown(md_str, escape=False)
+    soup = BeautifulSoup(html, "html.parser")
+    for img in soup.find_all("img"):
+        if img["src"].startswith("http"): continue
+        if re.match("^[a-zA-Z0-9_]", img["src"]):
+            img["src"] = f'{append}/' + img["src"]
+        if re.match("^\./[a-zA-Z0-9_]", img["src"]):
+            img["src"] = f'{append}/' + img["src"][2:]
+    return str(soup)
+
+
 
 # Modify `config.yml`
 def mdpath2html(dict_):
@@ -31,7 +62,7 @@ def mdpath2html(dict_):
                 # Replace path with content in dict
                 with open(dict_[key], encoding="utf-8") as f:
                     content = ''.join([line for line in f])
-                dict_[key] = mistune.markdown(content, escape=False)
+                dict_[key] = processMd(content, append="img")
 
 # Import `config.yml`
 def import_config(fp='config.yml'):

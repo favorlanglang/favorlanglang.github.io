@@ -1,11 +1,12 @@
 index:
   sections:
-    - title: Section 1
-      subtitle: a subtitle
-      content: "content/index.md"
-    - title: Section 2
-      subtitle: section 2 subtitle
-      content: "content/index.md"
+    - title: 線上字典使用説明
+      subtitle: Online Dictionary Usage Guide
+      content: "content/dict_guide.md"
+    - title: 下載字典
+      subtitle: Download dictionary files
+      content: "content/dict_download.md"
+   
   sidebar:
     title: "Sidebar title"
     items:
