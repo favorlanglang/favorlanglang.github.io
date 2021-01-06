@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Favorlang
+{% endblock %}
+
+{% block script %}
+    <script src="js/custom.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- <div class="change-background" style="position:fixed;left:5px;bottom:5px;padding:0;margin:0;">
+    <button data-url="1" onclick='document.querySelector("#header").style.backgroundImage = "url(img/background.jpg)"'>1</button>
+    <button data-url="2" onclick='document.querySelector("#header").style.backgroundImage = "url(img/background2.jpg)"'>2</button>
+    <button data-url="3" onclick='document.querySelector("#header").style.backgroundImage = "url(img/background3.jpg)"'>3</button>
+</div> -->
+
+
+<!-- Content -->
+<div id="content" class="8u skel-cell-important">
+    {% for section in sections %}
+        <section {% if section['id'] %} id="{{ section['id'] }}" {% endif %}>
+            <header>
+                <h2>{{ section['title'] }}</h2>
+                <span class="byline">{{ section['subtitle'] }}</span>
+            </header>
+            {{ section['content'] }}
+        </section>
+
+        <hr>
+    {% endfor %} 
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="4u">
+    <section>
+        <header>
+            <h2>{{ sidebar['title'] }}</h2>
+        </header>
+        <ul class="style">
+            {% for item in sidebar['items'] %}
+            <li>
+                <p class="posted">
+                    <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                </p>
+                {% if item['img'] %}
+                    <img src="{{ item['img'] }}" alt="" />
+                {% endif %}
+                {% if item['desc'] %}
+                    <p class="text">{{ item['desc'] }}</p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+<style>
+div#content {
+    scroll-behavior: smooth!important;
+}
+</style>
+
+{% endblock %}

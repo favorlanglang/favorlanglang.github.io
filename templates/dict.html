@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dictionary | Favorlang
+{% endblock %}
+
+{% block script %}
+<script src="js/custom.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script> -->
+<script src="js/vue/vue.js"></script>
+<script src="js/vue/vue-resource@1.5.1.js"></script>
+<link rel="stylesheet" href="css/style-dict.css">
+<link rel="stylesheet" href="css/style-app.css">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Content -->
+    <div id="content" class="12u skel-cell-important">
+        <section>
+            <header>
+                <h2>字典詞條</h2>
+                <span class="byline">Dictionary Entries</span>
+            </header>
+            
+            <ul class="toc">{{ toc }}</ul>
+            
+            <!-- Vue.js App  -->
+            <div class="vue-app" id="app">
+
+                <div class="dict">
+                    <div v-for="(entry, idx) in entries" class="item" v-bind:id="[[ entry.item_id ]]">
+                        <div class="lemma" v-bind:id="[[ entry.lemma_id ]]">[[ entry.lemma ]]</div>
+                        <span class="page">[[ entry["page"] ]]</span>
+                        <p class="zh-def">[[ entry["zh-def"] ]]</p>
+                        <p class="ori-def" v-html="entry['ori-def']"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Vue.js App End -->
+        </section>
+    </div>
+
+
+    <!-- ######## Vue.js #######-->
+    <script>
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+
+            el: '#app',
+            data() {
+                return {
+                    entries: [],
+                }
+            },
+            created() {
+                this.$http.get('https://favorlanglang.github.io/dict/dict-indexed.json').then(function (data) {
+                    this.entries = data.body;
+                });
+            },
+        })
+    </script>
+
+    <style>
+        html {
+        scroll-behavior: smooth !important;
+        }
+    </style>
+{% endblock %}

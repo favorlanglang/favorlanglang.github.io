@@ -1,0 +1,21 @@
+.exact-match {
+    float: right;
+}
+
+#content header {
+    margin-bottom: 0.45em;
+}
+
+#app input {
+    margin-bottom: 0.2em;
+}
+#app {
+    min-height: 350px;
+}
+
+@media screen and (max-width: 650px) {
+    .exact-match {display: none;}
+    input {
+        width: 32%;
+    }
+}

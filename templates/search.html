@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search | Favorlang
+{% endblock %}
+
+{% block script %}
+<script src="js/custom.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script> -->
+<script src="js/vue/vue.js"></script>
+<script src="js/vue/vue-resource@1.5.1.js"></script>
+<link rel="stylesheet" href="css/style-dict.css">
+<link rel="stylesheet" href="css/style-app.css">
+{% endblock %}
+
+
+{% block content %}
+<div id="content" class="12u skel-cell-important">
+    <section>
+        <header>
+            <h2>字典檢索</h2>
+            <span class="byline">Search Favorlang Dictionary</span>
+        </header>
+
+        <!-- Vue.js App  -->
+        <div class="vue-app" id="app">
+
+            <input type="text" placeholder="Item" v-model.lazy="search.lemma">
+            <input type="text" placeholder="Definition" v-model.lazy="search.ori">
+            <input type="text" placeholder="中文釋義" v-model.lazy="search.chinese">
+            <span class="exact-match" v-bind:title="checkbox_msg">
+                Exact Search:
+                <input type="checkbox" v-model="exact">
+            </span>
+
+            <div class="dict">
+                <div v-for="(entry, idx) in filterGeneric" class="item">
+                    <div class="lemma">[[ entry.lemma ]]</div>
+                    <span class="page">[[ entry["ori-page"] ]]</span>
+                    <p class="zh-def">[[ entry["zh-def"] ]]</p>
+                    <p class="ori-def">[[ entry["ori-def"] ]]</p>
+                </div>
+            </div>
+        </div>
+        <!-- Vue.js App End -->
+    </section>
+</div>
+
+<!-- ######## Vue.js #######-->
+<script>
+    var app = new Vue({
+        delimiters: ['[[', ']]'],
+
+        el: '#app',
+        data() {
+            return {
+                entries: [],
+                search: {
+                    lemma: "",
+                    lemma_norm: "",
+                    ori: "",
+                    ori_norm: "",
+                    chinese: "",
+                },
+                exact: false,
+                checkbox_msg: "Uncheck to ignore diacritics and case",
+            }
+        },
+        created() {
+            this.$http.get('https://favorlanglang.github.io/dict/dict-normalized.json').then(function (data) {
+                this.entries = data.body;
+            });
+        },
+        computed: {
+            filterGeneric: function () {
+                if (this.search.lemma != "") return this.filterLemma;
+                if (this.search.ori != "") return this.filterDef;
+                if (this.search.chinese != "") return this.filterZhDef;
+
+                return this.entries.slice(0, 5);
+            },
+            filterLemma: function () {
+                return this.entries.filter(entry => {
+                    if (this.exact)
+                        return entry.lemma.includes(this.search.lemma);
+                    else
+                        return entry.lemma_norm.includes(this.search.lemma_norm);
+                });
+            },
+            filterDef: function () {
+                return this.entries.filter(entry => {
+                    if (this.exact)
+                        return entry['ori-def'].includes(this.search.ori);
+                    else
+                        return entry['ori-def_norm'].includes(this.search.ori_norm);
+                });
+            },
+            filterZhDef: function () {
+                return this.entries.filter(entry => {
+                    return entry['zh-def'].includes(this.search.chinese);
+                });
+            }
+        },
+        filter: {
+            normStr: function(str) {
+                return str.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            }
+        },
+        watch: {
+            "search.lemma": function() {
+                this.search.lemma_norm = this.search.lemma.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            },
+            "search.ori": function() {
+                this.search.ori_norm = this.search.ori.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            },
+        }
+    })
+</script>
+{% endblock %}

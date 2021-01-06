@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<!--
+	Iridium by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+
+<head>
+	<title>
+    Dictionary | Favorlang
+</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link href='css/fonts.css' rel='stylesheet' type='text/css'>
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/skel-panels.min.js"></script>
+	<script src="js/init.js"></script>
+	<noscript>
+		<link rel="stylesheet" href="css/skel-noscript.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-desktop.css" />
+	</noscript>
+	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+    
+<script src="js/custom.js"></script>
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script> -->
+<script src="js/vue/vue.js"></script>
+<script src="js/vue/vue-resource@1.5.1.js"></script>
+<link rel="stylesheet" href="css/style-dict.css">
+<link rel="stylesheet" href="css/style-app.css">
+
+</head>
+
+
+
+<body class="no-sidebar">
+
+
+
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			<!-- Logo -->
+			<div id="logo">
+				<h1><a href="#">虎尾壠語字典</a></h1>
+				<span>Favorlang Dictionary Transcribed</span>
+			</div>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">
+						首頁 <br>Home
+					</a></li>
+					<li><a href="intro.html">
+						簡介 <br>Intro
+					</a></li>
+					<li><a href="dict.html">
+						字典 <br>Dict
+					</a></li>
+					<li><a href="search.html">
+						電子檢索 <br>Search
+					</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<!-- Main -->
+	<div id="main">
+		<div class="container">
+			<div class="row">
+
+				<!-- Content -->
+                
+    <!-- Content -->
+    <div id="content" class="12u skel-cell-important">
+        <section>
+            <header>
+                <h2>字典詞條</h2>
+                <span class="byline">Dictionary Entries</span>
+            </header>
+            
+            <ul class="toc"><li><a href='#a-first'>A</a></li><li><a href='#b-first'>B</a></li><li><a href='#c-first'>C</a></li><li><a href='#d-first'>D</a></li><li><a href='#e-first'>E</a></li><li><a href='#g-first'>G</a></li><li><a href='#h-first'>H</a></li><li><a href='#j-first'>J</a></li><li><a href='#i-first'>I</a></li><li><a href='#k-first'>K</a></li><li><a href='#l-first'>L</a></li><li><a href='#m-first'>M</a></li><li><a href='#n-first'>N</a></li><li><a href='#o-first'>O</a></li><li><a href='#p-first'>P</a></li><li><a href='#q-first'>Q</a></li><li><a href='#r-first'>R</a></li><li><a href='#s-first'>S</a></li><li><a href='#t-first'>T</a></li><li><a href='#u-first'>U</a></li><li><a href='#w-first'>W</a></li><li><a href='#z-first'>Z</a></li><li><a href='#f-first'>F</a></li></ul>
+            
+            <!-- Vue.js App  -->
+            <div class="vue-app" id="app">
+
+                <div class="dict">
+                    <div v-for="(entry, idx) in entries" class="item" v-bind:id="[[ entry.item_id ]]">
+                        <div class="lemma" v-bind:id="[[ entry.lemma_id ]]">[[ entry.lemma ]]</div>
+                        <span class="page">[[ entry["page"] ]]</span>
+                        <p class="zh-def">[[ entry["zh-def"] ]]</p>
+                        <p class="ori-def" v-html="entry['ori-def']"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Vue.js App End -->
+        </section>
+    </div>
+
+
+    <!-- ######## Vue.js #######-->
+    <script>
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+
+            el: '#app',
+            data() {
+                return {
+                    entries: [],
+                }
+            },
+            created() {
+                this.$http.get('https://favorlanglang.github.io/dict/dict-indexed.json').then(function (data) {
+                    this.entries = data.body;
+                });
+            },
+        })
+    </script>
+
+    <style>
+        html {
+        scroll-behavior: smooth !important;
+        }
+    </style>
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<!-- <div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="4u">
+					<section>
+						<h2>Latest Posts</h2>
+						<ul class="default">
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, iusto eum dolores natus id a similique vel unde quis earum debitis esse nam, impedit distinctio ducimus! Aspernatur temporibus natus pariatur.</p>
+						</ul>
+					</section>
+				</div>
+				<div class="4u">
+					<section>
+						<h2>Ultrices fringilla</h2>
+						<ul class="default">
+							<li><a href="#">Pellentesque lectus gravida blandit</a></li>
+							<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+							<li><a href="#">Phasellus nibh pellentesque congue</a></li>
+							<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+							<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+						</ul>
+					</section>
+				</div>
+				<div class="4u">
+					<section>
+						<h2>Aenean elementum</h2>
+						<ul class="default">
+							<li><a href="#">Pellentesque lectus gravida blandit</a></li>
+							<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
+							<li><a href="#">Phasellus nibh pellentesque congue</a></li>
+							<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
+							<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<div class="container">
+			網頁維護: <a href="https://yongfu.name">Yongfu</a>&nbsp;&nbsp;&nbsp;原始碼: <a href="https://github.com/favorlanglang/favorlanglang.github.io">GitHub</a>
+		</div>
+	</div>
+
+</body>
+</html>

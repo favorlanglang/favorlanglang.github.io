@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Intro | Favorlang
+{% endblock %}
+
+{% block script %}
+    <script src="js/custom.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div id="content" class="8u skel-cell-important">
+    {% for section in sections %}
+        <section {% if section['id'] %} id="{{ section['id'] }}" {% endif %}>
+            <header>
+                <h2>{{ section['title'] }}</h2>
+                <span class="byline">{{ section['subtitle'] }}</span>
+            </header>
+            {{ section['content'] }}
+        </section>
+
+    <hr>
+    {% endfor %} 
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="4u">
+    <section>
+        <header>
+            <h2>{{ sidebar['title'] }}</h2>
+        </header>
+        <ul class="style">
+            {% for item in sidebar['items'] %}
+            <li>
+                <p class="posted">
+                    <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                </p>
+                {% if item['img'] %}
+                    <img src="{{ item['img'] }}" alt="" />
+                {% endif %}
+                {% if item['desc'] %}
+                    <p class="text">{{ item['desc'] }}</p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+{% endblock %}
